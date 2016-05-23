@@ -85,7 +85,6 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ImageLoader).call(this));
 
 	    _this._store = {};
-	    console.log('enter ImageLoader');
 	    return _this;
 	  }
 
@@ -113,6 +112,9 @@
 	              resolve();
 	            }
 	          };
+	          img.onerror = function () {
+	            reject();
+	          };
 	        });
 	      });
 	    }
@@ -128,10 +130,12 @@
 	  "King Fisher": "http://www.gettyimages.ca/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg"
 	};
 
-	var loader = new ImageLoader();
-	loader.load(images).then(function () {
-	  console.log('load finish.');
-	});
+	// let loader = new ImageLoader();
+	// loader.load(images).then(()=>{
+	//   console.log('load finish.');
+	// },()=>{
+	//   console.log('error');
+	// });
 
 	// loader.on('progress',(current,total)=>{
 	//   console.log(`${current} of ${total} completed`);
