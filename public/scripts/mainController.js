@@ -18,15 +18,21 @@ module('imageUploader',['imageUploader.service'])
     $scope.percent = 0;
     $scope.success = [];
     $scope.fail = [];
+    $scope.result = '';
   }
   $scope.upload = function(list){
     return uploadImages(list);
   }
+  $scope.$on('FinishEvent', function() {
+    $scope.result = 'All Images are uploaded';
+  });
 
-  // $scope.upload = uploadImages($scope.imagelist);
   function successCallback(url){
     $scope.finish++;
     $scope.percent = ($scope.finish/$scope.total)*100+'%';
+    if($scope.finish === $scope.total){
+      $scope.$emit('FinishEvent');
+    }
     $scope.success.push('Finish uploading: '+url);
   }
 
