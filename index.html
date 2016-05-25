@@ -13,7 +13,7 @@
   </head>
   <body>
     <div id="content" ng-controller="loadController as vm">
-      <button ng-click="upload()">Upload</button>
+      <button ng-click="upload(imagelist)">Upload</button>
       <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{percent}};">
           <div>
@@ -21,12 +21,17 @@
           </div>
         </div>
       </div>
+      <ul>
+        <li ng-repeat="eachResult in success" value="{{eachResult}}" class="bg-info">{{eachResult}}</li>
+        <br>
+        <li ng-repeat="eachResult in fail" value="{{eachResult}}" class="bg-danger">{{eachResult}}</li>
+      </ul>
     </div>
 
     <script src="lib/jquery-2.2.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="http://code.angularjs.org/1.1.0/angular-mocks.js"></script>
     <script src="public/scripts/mainController.js"></script>
     <script src="public/scripts/mainService.js"></script>
-    <script type="text/javascript" src="dist/bundle.js" charset="utf-8"></script>
   </body>
 </html>
