@@ -19,6 +19,7 @@ module('imageUploader',['imageUploader.service'])
     $scope.success = [];
     $scope.fail = [];
     $scope.result = '';
+    $scope.showBar = false;
   }
   $scope.upload = function(list){
     return uploadImages(list);
@@ -43,6 +44,7 @@ module('imageUploader',['imageUploader.service'])
 
   function uploadImages(images){
     initData();
+    $scope.showBar = true;
     // return function(){
       Object.getOwnPropertyNames(images)
       .forEach((key)=>{
@@ -51,6 +53,7 @@ module('imageUploader',['imageUploader.service'])
       })
     // }
   }
+
 })
 
 
